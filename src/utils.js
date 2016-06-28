@@ -44,14 +44,15 @@ export function placement(place, content, origin) {
   const pos = isDOM(origin) ? position(origin)
     : { top: origin.y, right: origin.x, bottom: origin.y, left: origin.x, width: 0, height: 0 };
 
-  console.log('computed position (utils placement):', pos);
+  console.log('computed position (utils placement):', place, pos);
   console.log('&&&origin.offsetLeft', origin.offsetLeft);
   console.log('***origin.offsetTop', origin.offsetTop);
 
+  // If parent is positioned relative, reset the left and top offset appropriately
   if (origin.offsetLeft !== undefined) {
     pos.left = origin.offsetLeft;
   }
-  if (origin.offsetTop != undefined) {
+  if (origin.offsetTop !== undefined) {
     pos.top = origin.offsetTop;
   }
 
