@@ -48,6 +48,13 @@ export function placement(place, content, origin) {
   console.log('&&&origin.offsetLeft', origin.offsetLeft);
   console.log('***origin.offsetTop', origin.offsetTop);
 
+  if (origin.offsetLeft) {
+    pos.left = origin.offsetLeft;
+  }
+  if (origin.offsetTop) {
+    pos.left = origin.offsetTop;
+  }
+
   let offset = { width: dim.width, height: dim.height };
   switch(place) {
   case 'top': case 'bottom':
