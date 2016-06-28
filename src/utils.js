@@ -25,7 +25,7 @@ export function position(el) {
     right: pos.right + winLeft,
     bottom: pos.bottom + winTop,
     width: pos.width,
-    height: pos.height
+    height: pos.height,
   };
 }
 
@@ -41,15 +41,10 @@ export function placement(place, content, origin) {
   const gap = 12;
   const dim = dimension(content);
 
-  console.log('origin', origin);
-  console.log('Is the origin DOM node?', isDOM(origin), origin);
-
-
-
   const pos = isDOM(origin) ? position(origin)
     : { top: origin.y, right: origin.x, bottom: origin.y, left: origin.x, width: 0, height: 0 };
 
-  console.log('computed position:', pos);
+  console.log('computed position (utils placement):', pos);
 
   let offset = { width: dim.width, height: dim.height };
   switch(place) {
