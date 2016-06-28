@@ -46,24 +46,52 @@ class Tooltip extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+    // this.state.offsetLeft = this.props.origin.offsetLeft;
+    // this.state.offsetTop = this.props.origin.offsetTop;
+    // this.state.offsetWidth = this.props.origin.offsetWidth;
+    // this.state.offsetHeight = this.props.origin.offsetHeight;
   }
 
   componentWillReceiveProps(nextProps) {
     const { place, content, children } = nextProps;
     const origin = originOrEl(nextProps);
-    if (origin && (originOrEl(this.props) != origin || this.props.place !== place ||
-        this.props.content !== content || this.props.children !== children)) {
+    console.log('@@@ this.state', this.state);
+    console.log('@@@ nextProps', nextProps);
+    if (origin &&
+        ((Object.keys(this.state).length && !this.originSamePosition(origin, this.state)) ||
+        originOrEl(this.props) != origin ||
+        this.props.place !== place ||
+        this.props.content !== content ||
+        this.props.children !== children)) {
       this.updatePosition(nextProps);
     }
   }
 
   updatePosition(props) {
+    console.log('^^^^^^^', props);
     // Render content into hidden DOM element to determine size
     const content = this.children(props);
     ReactDOM.render(<div>{content}</div>, this.refs.shadow, () => {
       const state = adjust(this.refs.shadow, props);
       this.setState(state);
+      setTimeout(()=>{console.log('this.state after update', this.state);},0);
     });
+  }
+
+  originSamePosition(origin1, statePosition) {
+    // compares the position of one origin to another and returns true if
+    // they are equal, false if not
+    console.log('origin1.offsetLeft === state.offsetLeft',origin1.offsetLeft, statePosition.offset.left);
+    console.log('origin1.offsetTop === state.offsetTop',origin1.offsetTop, statePosition.offset.top);
+    console.log('origin1.offsetHeight === state.offsetHeight',origin1.offsetHeight, statePosition.offset.height);
+    console.log('origin1.offsetWidth === state.offsetWidth',origin1.offsetWidth, statePosition.offset.width);
+
+    return (
+      origin1.offsetLeft === statePosition.offset.left &&
+      origin1.offsetTop === statePosition.offset.top &&
+      origin1.offsetHeight === statePosition.offset.height &&
+      origin1.offsetWidth === statePosition.offset.width
+    );
   }
 
   children(props = this.props) {
