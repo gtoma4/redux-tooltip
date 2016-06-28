@@ -80,6 +80,8 @@ export function placement(place, content, origin) {
     break;
   }
 
+  console.log('#### offset for tt', offset);
+
   return offset;
 }
 
