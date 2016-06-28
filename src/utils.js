@@ -52,7 +52,7 @@ export function placement(place, content, origin) {
     pos.left = origin.offsetLeft;
   }
   if (origin.offsetTop != undefined) {
-    pos.left = origin.offsetTop;
+    pos.top = origin.offsetTop;
   }
 
   let offset = { width: dim.width, height: dim.height };
