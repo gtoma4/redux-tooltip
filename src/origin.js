@@ -79,6 +79,8 @@ class Origin extends Component {
 
     if (!props.onMouseEnter) {
       props.onMouseEnter = e => {
+        console.log('MouseEnter', this.props.name);
+        
         const action = ['show', 'both'].indexOf(this.props.delayOn) !== -1
           ? this.createWithDelay(show, { origin: e.target })
           : show({ ...this.props, origin: e.target });
