@@ -48,10 +48,10 @@ export function placement(place, content, origin) {
   console.log('&&&origin.offsetLeft', origin.offsetLeft);
   console.log('***origin.offsetTop', origin.offsetTop);
 
-  if (origin.offsetLeft) {
+  if (origin.offsetLeft !== undefined) {
     pos.left = origin.offsetLeft;
   }
-  if (origin.offsetTop) {
+  if (origin.offsetTop != undefined) {
     pos.left = origin.offsetTop;
   }
 
