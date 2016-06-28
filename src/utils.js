@@ -25,7 +25,7 @@ export function position(el) {
     right: pos.right + winLeft,
     bottom: pos.bottom + winTop,
     width: pos.width,
-    height: pos.height,
+    height: pos.height
   };
 }
 
