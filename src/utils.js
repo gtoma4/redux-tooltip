@@ -45,6 +45,8 @@ export function placement(place, content, origin) {
     : { top: origin.y, right: origin.x, bottom: origin.y, left: origin.x, width: 0, height: 0 };
 
   console.log('computed position (utils placement):', pos);
+  console.log('&&&origin.offsetLeft', origin.offsetLeft);
+  console.log('***origin.offsetTop', origin.offsetTop);
 
   let offset = { width: dim.width, height: dim.height };
   switch(place) {
