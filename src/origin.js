@@ -79,18 +79,31 @@ class Origin extends Component {
 
     if (!props.onMouseEnter) {
       props.onMouseEnter = e => {
-        console.log('MouseEnter', this.props.name);
-        
+        // console.log('MouseEnter', this.props);
+        // console.log('Origin will be:', e.target);
+        // console.log('this.refs?', this.refs);
+        // console.log('dataOrigin', e.target.getAttribute('data_origin'));
+        // if e.target is origin, (ref=wrapper) then find parent that is...
+        let testNode = this.refs.wrapper;
+
         const action = ['show', 'both'].indexOf(this.props.delayOn) !== -1
-          ? this.createWithDelay(show, { origin: e.target })
-          : show({ ...this.props, origin: e.target });
+          ? this.createWithDelay(show, { origin: testNode })
+          : show({ ...this.props, origin: testNode });
         this.props.dispatch(action);
         this.props.onHover && this.props.onHover(e);
+
+        // const action = ['show', 'both'].indexOf(this.props.delayOn) !== -1
+        //   ? this.createWithDelay(show, { origin: e.target })
+        //   : show({ ...this.props, origin: e.target });
+        // this.props.dispatch(action);
+        // this.props.onHover && this.props.onHover(e);
       };
     }
 
     if (!props.onMouseLeave) {
       props.onMouseLeave = e => {
+        //console.log('MouseLeave', this.props.name);
+
         const action = ['hide', 'both'].indexOf(this.props.delayOn) !== -1
           ? this.createWithDelay(hide)
           : hide({ ...this.props });

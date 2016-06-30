@@ -46,10 +46,6 @@ class Tooltip extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-    // this.state.offsetLeft = this.props.origin.offsetLeft;
-    // this.state.offsetTop = this.props.origin.offsetTop;
-    // this.state.offsetWidth = this.props.origin.offsetWidth;
-    // this.state.offsetHeight = this.props.origin.offsetHeight;
   }
 
   componentWillReceiveProps(nextProps) {

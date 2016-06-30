@@ -44,9 +44,9 @@ export function placement(place, content, origin) {
   const pos = isDOM(origin) ? position(origin)
     : { top: origin.y, right: origin.x, bottom: origin.y, left: origin.x, width: 0, height: 0 };
 
-  console.log('computed position (utils placement):', place, pos);
-  console.log('&&&origin.offsetLeft', origin.offsetLeft);
-  console.log('***origin.offsetTop', origin.offsetTop);
+  // console.log('computed position (utils placement):', place, pos, origin);
+  // console.log('&&&origin.offsetLeft', origin.offsetLeft);
+  // console.log('***origin.offsetTop', origin.offsetTop);
 
   // If parent is positioned relative, reset the left and top offset appropriately
   if (origin.offsetLeft !== undefined) {
@@ -81,7 +81,7 @@ export function placement(place, content, origin) {
     break;
   }
 
-  console.log('#### offset for tt', offset);
+  // console.log('#### offset for tt', offset);
 
   return offset;
 }
@@ -202,6 +202,7 @@ export function overDirs(tip, el) {
  * @return {Object} 'offset': style data to locate, 'place': final direction of the tooltip
  */
 export function adjust(content, props) {
+  // console.log('ADJUST function-content/props', content, props);
   const { auto, within } = props;
   const origin = originOrEl(props);
   let { place } = props;
@@ -266,5 +267,6 @@ export function deprecatedWarning(action) {
 }
 
 export function originOrEl(props) {
+  //console.log('Origin or el?', props.origin, props.el);
   return props.origin || props.el;
 }
