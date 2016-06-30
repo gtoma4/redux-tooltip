@@ -29,7 +29,7 @@ export default class Page extends Component {
           <Origin className="user">
             <input type="input" placeholder="mail" />
           </Origin> @ <Origin className="domain">
-            <input type="input" placeholder="example.com" />
+            <input style={{position:'absolute', right: '0px'}} type="input" placeholder="example.com" />
           </Origin>
         </p>
       </div>

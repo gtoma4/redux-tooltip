@@ -55,7 +55,8 @@ class Tooltip extends Component {
     if (origin &&
         // add check to see if position has changed.
         // Note: Object.keys is so that we don't fire isSamePosition check on initial state
-        ((Object.keys(this.state).length && !this.isSamePosition(origin)) ||
+        (
+          (Object.keys(this.state).length && !this.isSamePosition(origin)) ||
         originOrEl(this.props) != origin ||
         this.props.place !== place ||
         this.props.content !== content ||

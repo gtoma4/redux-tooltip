@@ -52,7 +52,7 @@ class App extends Component {
         <h2>Moving Tooltip</h2>
         <div
           className="moving"
-          style={{ width: '260px', height: '120px', backgroundColor: 'lightgray' }} 
+          style={{ width: '260px', height: '120px', backgroundColor: 'lightgray' }}
           onMouseMove={this.handleMove}
           onMouseLeave={this.handleLeave}
         />

@@ -83,7 +83,8 @@ class Origin extends Component {
         // console.log('Origin will be:', e.target);
         // console.log('this.refs?', this.refs);
         // console.log('dataOrigin', e.target.getAttribute('data_origin'));
-        // if e.target is origin, (ref=wrapper) then find parent that is...
+
+        // NOTE: This code sets the origin to this.refs.wrapper all the time...
         let testNode = this.refs.wrapper;
 
         const action = ['show', 'both'].indexOf(this.props.delayOn) !== -1
@@ -91,6 +92,9 @@ class Origin extends Component {
           : show({ ...this.props, origin: testNode });
         this.props.dispatch(action);
         this.props.onHover && this.props.onHover(e);
+        // end new code...
+
+        // NOTE: below is the original code
 
         // const action = ['show', 'both'].indexOf(this.props.delayOn) !== -1
         //   ? this.createWithDelay(show, { origin: e.target })
