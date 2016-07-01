@@ -103,23 +103,27 @@ class Tooltip extends Component {
       base: { ...styles.base, ...themes.simple.base, visibility, ...offset },
       content: { ...styles.content, ...themes.simple.content },
       arrow: { ...styles.arrow },
-      border: { ...styles.border.base, ...styles.border[place], ...themes.simple.border },
+      // NOTE: border theme applied in 'styles.js'
+      border: { ...styles.border.base,  ...styles.border[place] }
     };
     style.shadow = { ...style.content, visibility: 'hidden', position: 'absolute' };
+
+    console.log('Border Style', place, style.border);
 
     return (
       <div>
         <div
-          ref="tooltip"
-          style={style.base}
-          onMouseEnter={onHover}
-          onMouseLeave={onLeave}
+            ref="tooltip"
+            className="theTooltip"
+            style={style.base}
+            onMouseEnter={onHover}
+            onMouseLeave={onLeave}
         >
-          <div ref="content" style={style.content}>
+          <div className="ttContent" ref="content" style={style.content}>
             {content}
           </div>
-          <div style={style.arrow} key={`a-${place}`}>
-            <span ref="border" style={style.border} key={`b-${place}`}></span>
+          <div className="arrow" style={style.arrow} key={`a-${place}`}>
+            <span className="border" ref="border" style={{...style.border}} key={`b-${place}`}></span>
           </div>
         </div>
         <div ref="shadow" style={style.shadow} />

@@ -43,7 +43,7 @@ class App extends Component {
           </div>
           <span onClick={()=>{console.log('clicked');}} style={containerStyle}>
             <span>
-              <Origin name="tt2" place="bottom">
+              <Origin name="tt2">
                 <svg viewBox="0 0 24 24" style={{height: '24px', width: '24px', cursor: 'pointer', fill: 'blue'}}>
                   <title></title>
                   <desc></desc>
@@ -58,7 +58,7 @@ class App extends Component {
                 </svg>
               </Origin>
             </span>
-            <Tooltip name="tt2">problem tooltip #2</Tooltip>
+            <Tooltip name="tt2" place="bottom">problem tooltip #2</Tooltip>
           </span>
 
 
