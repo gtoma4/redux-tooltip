@@ -48,13 +48,13 @@ export function placement(place, content, origin) {
   // console.log('&&&origin.offsetLeft', origin.offsetLeft);
   // console.log('***origin.offsetTop', origin.offsetTop);
 
-  // If parent is positioned relative, reset the left and top offset appropriately
-  // if (origin.offsetLeft !== undefined) {
-  //   pos.left = origin.offsetLeft;
-  // }
-  // if (origin.offsetTop !== undefined) {
-  //   pos.top = origin.offsetTop;
-  // }
+  //If parent is positioned relative, reset the left and top offset appropriately
+  if (origin.offsetLeft !== undefined) {
+    pos.left = origin.offsetLeft;
+  }
+  if (origin.offsetTop !== undefined) {
+    pos.top = origin.offsetTop;
+  }
 
   let offset = { width: dim.width, height: dim.height };
   switch(place) {
