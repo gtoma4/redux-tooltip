@@ -1,5 +1,4 @@
 [![NPM Package][npm_img]][npm_site]
-[![Travis][ci_img]][ci_site]
 [![Dependency Status][david_img]][david_site]
 
 # redux-tooltip2
