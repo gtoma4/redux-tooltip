@@ -265,7 +265,6 @@ npm run test:feature:ci
 
 ### TODO
 
-+ Introduce ESLint
 + Finish updating this document
 + Add testing for added features
 + Fix broken tests
