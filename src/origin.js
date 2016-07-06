@@ -77,13 +77,11 @@ class Origin extends Component {
     const props = { ...this.props };
     delete props['dispatch'];
 
-    console.log('#### this.props origin', this.props);
-
     if (!props.onMouseEnter) {
       props.onMouseEnter = e => {
-        console.log('MouseEnter', this.props);
-        console.log('Origin will be:', e.target.style);
-        console.log('this.refs?', this.refs);
+        // console.log('MouseEnter', this.props);
+        // console.log('Origin will be:', e.target.style);
+        // console.log('this.refs?', this.refs);
         //console.log('dataOrigin', e.target.getAttribute('data_origin'));
 
         // NOTE: This code sets the origin to this.refs.wrapper all the time...
