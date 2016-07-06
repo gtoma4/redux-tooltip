@@ -11,7 +11,7 @@ export const simple = {
     padding: '8px 10px'
   },
   border: {
-    borderColor: 'white',
+    borderColor: '#fff',   // borderColor should match base background so arrow is same color as tooltip background
     marginBottom: '-2px'
   }
 };

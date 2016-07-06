@@ -77,19 +77,27 @@ class Origin extends Component {
     const props = { ...this.props };
     delete props['dispatch'];
 
+    console.log('#### this.props origin', this.props);
+
     if (!props.onMouseEnter) {
       props.onMouseEnter = e => {
-        // console.log('MouseEnter', this.props);
-        // console.log('Origin will be:', e.target);
-        // console.log('this.refs?', this.refs);
-        // console.log('dataOrigin', e.target.getAttribute('data_origin'));
+        console.log('MouseEnter', this.props);
+        console.log('Origin will be:', e.target.style);
+        console.log('this.refs?', this.refs);
+        //console.log('dataOrigin', e.target.getAttribute('data_origin'));
 
         // NOTE: This code sets the origin to this.refs.wrapper all the time...
-        let testNode = this.refs.wrapper;
+        let originNode = this.refs.wrapper;
+
+        // if e.target is absolutely positioned, use e.target for originNode otherwise
+        // tooltip will render in wrong location
+        if (e.target.style.position === 'absolute') {
+          originNode = e.target;
+        }
 
         const action = ['show', 'both'].indexOf(this.props.delayOn) !== -1
-          ? this.createWithDelay(show, { origin: testNode })
-          : show({ ...this.props, origin: testNode });
+          ? this.createWithDelay(show, { origin: originNode })
+          : show({ ...this.props, origin: originNode });
         this.props.dispatch(action);
         this.props.onHover && this.props.onHover(e);
         // end new code...

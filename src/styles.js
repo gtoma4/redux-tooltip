@@ -1,5 +1,8 @@
 import * as themes from './themes';
 
+// set up the name of the theme to apply...
+const appliedTheme = 'simple';
+
 export const base = {
   padding: 0,
   fontSize: 0,
@@ -9,11 +12,13 @@ export const base = {
   top: 0,
   zIndex: 9999,
   width: 'auto',
-  overflow: 'visible'
+  overflow: 'visible',
+  ...themes[appliedTheme].base
 };
 
 export const content = {
-  overflow: 'hidden'
+  overflow: 'hidden',
+  ...themes[appliedTheme].content
 };
 
 export const arrow = {
@@ -24,7 +29,8 @@ export const arrow = {
   position: 'absolute',
   top: 0,
   left: 0,
-  zIndex: -1
+  zIndex: -1,
+  ...themes[appliedTheme].arrow
 };
 
 const vertical = {
@@ -38,76 +44,44 @@ const horizontal = {
   marginTop: '-8px'
 };
 
+
+// the border styling actually sets up the color and position for the arrow
 export const border = {
   base: {
-    ...themes.simple.border,
+    ...themes[appliedTheme].border,
     display: 'block',
     width: 0,
     height: 0,
     position: 'absolute',
-    borderStyle: 'solid'
+    borderStyle: 'solid',
+    ...themes[appliedTheme].border.base
   },
   top: {
-    borderColor: themes.simple.border.borderColor + 'transparent transparent transparent',
+    borderColor: themes[appliedTheme].border.borderColor + ' transparent transparent transparent',
     borderWidth: '9px 9px 0px 9px',
     bottom: '-7px',
-    ...vertical
+    ...vertical,
+    ...themes[appliedTheme].border.top
   },
   right: {
-    borderColor: 'transparent white transparent transparent',
+    borderColor: 'transparent ' + themes[appliedTheme].border.borderColor + ' transparent transparent',
     borderWidth: '9px 9px 9px 0px',
     left: '-7px',
-    ...horizontal
+    ...horizontal,
+    ...themes[appliedTheme].border.right
   },
   bottom: {
-    borderColor: 'transparent transparent ' + themes.simple.border.borderColor +' transparent',
+    borderColor: 'transparent transparent ' + themes[appliedTheme].border.borderColor +' transparent',
     borderWidth: '0px 9px 9px 9px',
     top: '-7px',
-    ...vertical
+    ...vertical,
+    ...themes[appliedTheme].border.bottom
   },
   left: {
-    borderColor: 'transparent transparent transparent white',
+    borderColor: 'transparent transparent transparent ' + themes[appliedTheme].border.borderColor,
     borderWidth: '9px 0px 9px 9px',
     right: '-7px',
-    ...horizontal
+    ...horizontal,
+    ...themes[appliedTheme].border.left
   }
 };
-
-
-// export const border = {
-//   base: {
-//     display: 'block',
-//     width: 0,
-//     height: 0,
-//     position: 'absolute'
-//   },
-//   top: {
-//     borderLeft: '9px solid transparent !important',
-//     borderRight: '9px solid transparent !important',
-//     borderTop: '9px solid',
-//     bottom: '-7px',
-//     ...vertical
-//   },
-//   right: {
-//     borderTop: '9px solid transparent !important',
-//     borderBottom: '9px solid transparent !important',
-//     borderRight: '9px solid',
-//     left: '-7px',
-//     ...horizontal
-//   },
-//   bottom: {
-//     borderBottom: '9px solid',
-//     borderLeft: '9px solid transparent !important',
-//     borderRight: '9px solid transparent !important',
-//
-//     top: '-7px',
-//     ...vertical
-//   },
-//   left: {
-//     borderTop: '9px solid transparent !important',
-//     borderBottom: '9px solid transparent !important',
-//     borderLeft: '9px solid',
-//     right: '-7px',
-//     ...horizontal
-//   }
-// };

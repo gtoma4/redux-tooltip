@@ -27,6 +27,7 @@ class Tooltip extends Component {
       ]),
       auto: PropTypes.bool.isRequired,
       within: PropTypes.func,
+      custStyle: PropTypes.object,
 
       // Props from wrapper props
       name: PropTypes.string,
@@ -94,21 +95,25 @@ class Tooltip extends Component {
   }
 
   render () {
+    // need to define customStyle and customBorder to deal with nested style objects
+    const customStyle = this.props.custStyle ? this.props.custStyle : {};
+    const customBorder = customStyle.border ? customStyle.border : {};
     const { show, onHover, onLeave } = this.props;
     const origin = originOrEl(this.props);
     const { place, offset } = this.state;
     const content = this.children();
     const visibility = (origin && show) ? 'visible' : 'hidden';
     const style = {
-      base: { ...styles.base, ...themes.simple.base, visibility, ...offset },
-      content: { ...styles.content, ...themes.simple.content },
-      arrow: { ...styles.arrow },
-      // NOTE: border theme applied in 'styles.js'
-      border: { ...styles.border.base,  ...styles.border[place] }
-    };
-    style.shadow = { ...style.content, visibility: 'hidden', position: 'absolute' };
+      // NOTE:  theme styles applied in 'styles.js'
+      base: { ...styles.base, visibility, ...offset, ...customStyle.base },
+      content: { ...styles.content, ...customStyle.content  },
+      arrow: { ...styles.arrow, ...customStyle.arrow },
 
-    console.log('Border Style', place, style.border);
+      border: { ...styles.border.base,  ...styles.border[place], ...customBorder[place] }
+    };
+    style.shadow = { ...styles.content, visibility: 'hidden', position: 'absolute' };
+
+    //console.log('Border Style', place, style.border);
 
     return (
       <div>

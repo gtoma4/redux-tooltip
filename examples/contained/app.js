@@ -28,6 +28,27 @@ class App extends Component {
               zIndex: '1'
             };
 
+    const custStyle ={
+      base: {
+        background: "aqua"
+      },
+
+      border: {
+        top: {
+          borderColor: 'aqua' + ' transparent transparent transparent'
+        },
+        right: {
+          borderColor: 'transparent ' + 'aqua' + ' transparent transparent'
+        },
+        bottom: {
+          borderColor: 'transparent transparent ' + 'aqua' +' transparent'
+        },
+        left: {
+          borderColor: 'transparent transparent transparent ' + 'aqua'
+        }
+      }
+    }
+
     return (
       <div>
         <h1>Contained Origin Example</h1>
@@ -39,7 +60,7 @@ class App extends Component {
             <div style={{width:"50px", height:"50px", backgroundColor:"red"}}></div>
 
             </Origin>
-            <Tooltip name="tt1" place="bottom" auto={false}>Tooltip number 1</Tooltip>
+            <Tooltip name="tt1" place="bottom" auto={false} custStyle={custStyle}>Tooltip number 1</Tooltip>
           </div>
           <span onClick={()=>{console.log('clicked');}} style={containerStyle}>
             <span>
