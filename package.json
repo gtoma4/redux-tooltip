@@ -1,6 +1,6 @@
 {
   "name": "redux-tooltip",
-  "version": "0.5.4",
+  "version": "1.0.0",
   "description": "A tooltip React component for Redux",
   "main": "./lib/index.js",
   "repository": {
@@ -31,9 +31,10 @@
     "react-component"
   ],
   "dependencies": {
-    "dompurify": "^0.7.4",
+    "dompurify": "^0.8.2",
     "is-dom": "^1.0.5",
-    "redux-actions": "^0.9.1"
+    "redux-actions": "^0.10.0",
+    "rimraf": "^2.5.3"
   },
   "devDependencies": {
     "babel-cli": "^6.7.5",

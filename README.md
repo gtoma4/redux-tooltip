@@ -2,9 +2,24 @@
 [![Travis][ci_img]][ci_site]
 [![Dependency Status][david_img]][david_site]
 
-# redux-tooltip
+# redux-tooltip2
 
 A tooltip [React](https://facebook.github.io/react/) component for [Redux](https://github.com/rackt/redux).
+
+
+## About this fork
+Thanks to @kuy for the original great software.
+
+This fork is not an 'official' fork, but has been modified from the original to handle some scenarios in my company's application as well as adding some features needed by my company (i.e. override default styles).
+
+Issues addressed/features added include:
+
++ Handle 'contained' origins, where a parent node is position: relative
++ Handle absolutely positioned origin nodes on window resize
++ Tootip Arrow rendering with React 15.xx.xx
++ Ability to override default styles with custStyle prop on Tooltip
+
+
 
 ## Installation
 
@@ -14,18 +29,7 @@ npm install --save redux-tooltip
 
 ## Demo & Examples
 
-Please check out [examples](https://github.com/kuy/redux-tooltip/tree/master/examples) directory.
-
-[Online demo](http://kuy.github.io/redux-tooltip) is also available.
-
-+ [Simple](http://kuy.github.io/redux-tooltip/simple.html)
-+ [Origin](http://kuy.github.io/redux-tooltip/origin.html)
-+ [Place](http://kuy.github.io/redux-tooltip/place.html)
-+ [Delay](http://kuy.github.io/redux-tooltip/delay.html)
-+ [Keep](http://kuy.github.io/redux-tooltip/keep.html)
-+ [Remote](http://kuy.github.io/redux-tooltip/remote.html)
-+ [Content](http://kuy.github.io/redux-tooltip/content.html)
-+ [Multiple](http://kuy.github.io/redux-tooltip/multiple.html)
+Please check out [examples](https://github.com/gtoma4/redux-tooltip/tree/master/examples) directory.
 
 ## Getting Started
 
@@ -56,7 +60,7 @@ class App extends React.Component {
 }
 ```
 
-#### 2. Wrap your content with an `Origin` component in Container or Presentatinal component
+#### 2. Wrap your content with an `Origin` component in Container or Presentational component
 
 ```
 import { Origin } from 'redux-tooltip';
@@ -116,6 +120,7 @@ A tooltip component. Please wrap a content which should be shown in a tooltip.
 + `within` *(`DOM`)*: A DOM element which is used to restrict the position where this tooltip is placed within.
 + `onHover` *(`Function`)*: A callback function to be called on mouseover at tooltip.
 + `onLeave` *(`Function`)*: A callback function to be called on mouseout at tooltip.
++ `custStyle` *(`object`)*: An object containing styling to override default tooltip styles.  Must have correct structure to apply the styles properly (see Custom Styles section in this document)
 
 ### `<Origin />`
 
@@ -180,6 +185,40 @@ A helper function to enable 'delay' feature.
 Internally, it sets a duration of delay to the [meta](https://github.com/acdlite/flux-standard-action#meta) section of given action.
 In `options` argument, `duration` is used for duration of delay. `callback` is a callback function which is called after expired delay.
 
+### `Custom Styles`
+Custom styles can be applied by setting the prop custStyle on the Tooltop component.  The custStyle object must be in the same structure as specified here because the default styles are overridden via the spread operator.
+
+  Note that the border styles are what create the 'arrow' and its direction and color must be overridden by changing the borderColor as indicated below, otherwise you lose the arrow.
+
+  You only have to specify the object with the style you want to update. for example, to change the top margin on the tooltip relative to the origin to 10px, set
+
+  ```custStyle={base:{marginTop: '10px'}}```
+
+`Style Object`
+```
+{
+  base: {...},
+  content: {...},
+  arrow: {...},
+  border: {
+    top: {
+      borderColor: 'white' + ' transparent transparent transparent'
+    },
+    right: {
+      borderColor: 'transparent ' + 'white' + ' transparent transparent'
+    },
+    bottom: {
+      borderColor: 'transparent transparent ' + 'white' +' transparent'
+    },
+    left: {
+      borderColor: 'transparent transparent transparent ' + 'white'
+    }
+  }
+}
+
+```
+
+
 ## Development
 
 ### Setup
@@ -230,23 +269,21 @@ npm run test:feature:ci
 ### TODO
 
 + Introduce ESLint
-+ API documentation using ESDoc
++ Finish updating this document
++ Add testing for added features
++ Fix broken tests
 
 ## Changelog
 
-See the [Releases](https://github.com/kuy/redux-tooltip/releases) page on GitHub.
+See the [Releases](https://github.com/gtoma4/redux-tooltip/releases) page on GitHub.
 
 ## License
 
 MIT
 
-## Author
-
-Yuki Kodama / [@kuy](https://twitter.com/kuy)
-
 [npm_img]: https://img.shields.io/npm/v/redux-tooltip.svg
 [npm_site]: https://www.npmjs.org/package/redux-tooltip
-[ci_img]: https://img.shields.io/travis/kuy/redux-tooltip/master.svg?style=flat-square
-[ci_site]: https://travis-ci.org/kuy/redux-tooltip
-[david_img]: https://img.shields.io/david/kuy/redux-tooltip.svg
-[david_site]: https://david-dm.org/kuy/redux-tooltip
+[ci_img]: https://img.shields.io/travis/gtoma4/redux-tooltip/master.svg?style=flat-square
+[ci_site]: https://travis-ci.org/gtoma4/redux-tooltip
+[david_img]: https://img.shields.io/david/gtoma4/redux-tooltip.svg
+[david_site]: https://david-dm.org/gtoma4/redux-tooltip
